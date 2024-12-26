@@ -9,6 +9,8 @@ form.addEventListener("submit", handleSubmit);
 function handleSubmit(e) {
   e.preventDefault();
   let existingUser = document.createElement("button");
+  existingUser.id = "existing";
+  existingUser.innerHTML = "Login as existing user";
   let user = userName.value;
   let userPassword = password.value;
 
@@ -17,9 +19,7 @@ function handleSubmit(e) {
   }
 
   if (localStorage.getItem(user)) {
-    existingUser.id = "existing";
-    existingUser.innerHTML = "Login as existing user";
-    body.append(existingUser);
+    form.append(existingUser);
     existingUser.addEventListener("click", () => {
       alert(`Logged in as ${user}`);
       userName.value = "";
